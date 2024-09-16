@@ -18,12 +18,17 @@ const RightSidebar = () => {
 
     const router = useRouter();
 
+    const { audio } = useAudio(); 
+    
     if (!topPodcasters) return <LoaderSpinner />
 
 
-  return (
-    <section className="right_sidebar
-    text-white-1">
+    
+
+    return (
+      <section className={cn('right_sidebar h-[calc(100vh-5px)]', {
+          'h-[calc(100vh-140px)]' : audio?.audioUrl
+      })}>
         <SignedIn>
             <Link href={`/profile/${user?.id}`}
             className='flex gap-3 pb-12'
